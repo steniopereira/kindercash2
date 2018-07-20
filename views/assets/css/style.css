@@ -1,0 +1,73 @@
+ nav {
+    background-color:#7B67AA;
+    padding: 20px;
+   
+}
+nav #logo {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 36pt;
+    color: whitesmoke;
+}
+
+nav #link{
+    font-family: 'Poppins', sans-serif;
+    color: whitesmoke;
+}
+
+h4 {
+    font-family: 'Gaegu', sans-serif;
+    font-size: 24pt;
+}
+
+p {
+    font-size: 10pt;
+}
+
+#landingPage {
+    margin-top: 20px;
+    font-family: 'Francois One', sans-serif;
+}
+
+#footer {
+    font-family: 'Poppins', sans-serif;
+    font-size: 6pt;
+    padding-top: 10px;
+    background-color:#7B67AA;
+    text-align: center;
+    color: whitesmoke;
+}
+
+#getstarted {
+    font-family: 'Gaegu', sans-serif;
+    background-color: #00A6EA;
+}
+
+#signUpImg {
+    padding-top: 40px;
+}
+
+#customerServiceImg {
+    padding-top: 20px;
+}
+
+ul.bullet {
+    list-style-type: square;
+}
+
+#kids {
+display: block;
+margin-left: auto;
+margin-right: auto;
+align-content: center;
+}
+
+#profilePic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+
+}
+.input-icon {
+    position: relative;
+}

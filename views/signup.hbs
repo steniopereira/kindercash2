@@ -1,0 +1,34 @@
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-1 col-sm-6 col-centered">
+
+        {{#if message}}
+            <div class="alert alert-danger">
+                {{message}}
+            </div>
+        {{/if}}
+        <div class="tile tile-login">
+            <h3 class="text-center">KinderCash Registration Form</h3>
+
+
+            <form action="/signup" method="post">
+
+
+            <div class="input-icon">
+                <span class="fa-user fa"></span>
+                <input type="text" name="fullname" class="form-control" placeholder="First Name & Last Name">
+            </div>
+            <div class="input-icon">
+                <span class="fa-inbox fa"></span>
+                <input type="text" name="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="input-icon">
+                <span class="fa-lock fa"></span>
+                <input type="password" name="password" class="form-control" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
+            </div><br>
+                <input type="submit"class="btn btn-block btn-primary btn-embossed" value="SIGN UP">
+            </form>
+        </div>
+    </div>
+
+</div>

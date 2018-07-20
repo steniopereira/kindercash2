@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{pageTitle}}</title>
+      <link href="/stylesheets/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Loading Bootstrap -->
+        <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="/bootstrap/css/prettify.css" rel="stylesheet">
+
+    <!-- Drunken Parrot UI -->
+        {{!-- <link href="/stylesheets/drunken-parrot.css" rel="stylesheet"> --}}
+   
+   <!-- Google APIs -->
+    <link href="https://fonts.googleapis.com/css?family=Francois+One|Gaegu|Poppins" rel="stylesheet">
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+  
+  </head>
+
+  <style>
+      .col-centered{
+          float: none;
+          margin: 0 auto;
+      }
+  </style>
+
+  <body>
+
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{homeUrl}}">KinderCash</a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="{{homeUrl}}"><i class="fa fa-home"></i>Home</a></li>
+            {{#if currentUser}}
+
+                <li class="dropdown">
+                    <a href="#" class="active dropdown-toggle" data-toggle="dropdown"><i class="fa fa-savings"></i> Accounts<i class="fa fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <div class="arrow top"></div>
+                        <li>
+                            <a class="" href="{{homeUrl}}/mysavings">
+                                <span class="fa fa-book"></span>Manage Accounts
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="{{homeUrl}}/savings/stats">
+                                <span class="fa fa-bar-chart-o"></span> Savings Statement
+                            </a>
+                        </li>
+                        <li>
+                            <a class="" href="{{homeUrl}}/checking/stats">
+                                <span class="fa fa-bar-chart-o"></span> Checking Statement
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                
+                <li class="dropdown">
+                    <a href="#" class="active dropdown-toggle" data-toggle="dropdown"><i class="fa fa-money"></i> Checking Balance: $ {{#if currentUser.checking}}{{currentUser.checking}}{{else}}0{{/if}}<i class="fa fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <div class="arrow top"></div>
+                        <li>
+                            <a onclick="$('#addChecking').modal('show')" class="" href="#">
+                                <span class="fa fa-plus"></span> Deposit
+                            </a>
+                        </li>
+                        <li>
+                            <a onclick="$('#removeChecking').modal('show')" class="" href="#">
+                                <span class="fa fa-minus"></span> Withdraw
+                            </a>
+                        </li>
+                </ul>
+            </li>
+
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{currentUser.name}} - Profile <i class="fa fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <div class="arrow top"></div>
+                        <li>
+                            <a href="{{homeUrl}}/profile">
+                                <span class="fa fa-user"></span> Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{homeUrl}}/logout">
+                                <span class="fa fa-sign-out"></span> Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <div id="removeChecking" class="modal fade">
+                    <div class="modal-dialog">
+                        <form action="/user/process/checkingSpent" method="post">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">Spend Money From Your Checking -- Current Balance: {{currentUser.checking}} $</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="input-icon">
+                                        <span class="fa-money fa"></span>
+                                        <input type="number" class="form-control" name="amount" placeholder="Amount">
+                                    </div>
+
+                                    <br>
+
+                                    <div class="input-icon">
+                                        <span class="fa-book fa"></span>
+                                        <input type="text" class="form-control" name="desc" placeholder="Description">
+                                    </div>
+
+                                    <br>
+
+                                    <div class="input-icon">
+                                        <span class="fa-calendar fa"></span>
+                                        <input type="date" class="form-control" name="date" placeholder="Date">
+                                    </div>
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <input type="submit" value="Complete" class="btn btn-primary">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div id="addChecking" class="modal fade">
+                    <div class="modal-dialog">
+                        <form action="/user/process/checkingAdd" method="post">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">Deposit into Checking -- Current Balance: $ {{currentUser.checking}}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="input-icon">
+                                        <span class="fa-money fa"></span>
+                                        <input type="number" class="form-control" name="amount" placeholder="Amount">
+                                    </div>
+                                    <br>
+                                    <div class="input-icon">
+                                        <span class="fa-book fa"></span>
+                                        <input type="text" class="form-control" name="desc" placeholder="Description">
+                                    </div>
+                                    <br>
+                                    <div class="input-icon">
+                                        <span class="fa-calendar fa"></span>
+                                        <input type="date" class="form-control" name="date" placeholder="Date">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <input type="submit" value="Complete" class="btn btn-primary">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+
+
+            {{else}}
+
+                <li>
+                    <a href="{{homeUrl}}/login">
+                        <i class="fa fa-sign-in"></i> Login</a>
+                </li>
+                <li>
+                    <a href="{{homeUrl}}/signup">
+                        <i class="fa fa-user"></i> Sign Up</a>
+                </li>
+
+            {{/if}}
+        </ul>
+    </nav>
+
+    <div class="container">
+        {{{body}}}
+    </div>
+    <br>
+
+    <div class="container" id="footer">
+    <div class="row align-items-end">
+        <div class="col-sm-4" id="">
+        <p>KINDERCASH, INC.</p>
+        </div>
+        <div class="col-sm-4">
+        <p>&#169; Copyright KinderCash, Inc., 2018. All rights reserved.</p>
+        </div>
+                <div class="col-sm-4">
+        <p>Privacy Policy</p>
+        </div>
+
+    </div>
+    </div>
+
+
+
+
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/bootstrap/js/prettify.js"></script>
+  <script>window.prettyPrint && prettyPrint();</script>
+
+  </body>
+</html>

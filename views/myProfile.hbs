@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        {{#if message}}
+            <div class="alert alert-primary">
+                {{message}}
+            </div>
+        {{/if}}
+        <br>
+<!-- Profile Card End-->
+
+        <div class="tile tile-profile col-md-6 col-centered" id="profileTile">
+            <img class="img-tumbnail" id="profilePic" src="{{profilePic}}" alt="Profile Picture">
+            <h4 id="profileName">{{currentUser.name}}</h4>
+            <p id="profileName">{{currentUser.email}}</p>
+            <hr>
+            <h4 id="profileName">Change Password</h4>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form action="/profile" method="post">
+                        <div class="input-icon">
+                            <span class="fa-lock fa"></span>
+                            <input type="password" class="form-control" name="curpassword" placeholder="Current Password">
+                        </div>
+                        <br>
+                        <div class="input-icon">
+                            <span class="fa-lock fa"></span>
+                            <input type="password" class="form-control" name="newpassword" placeholder="New Password">
+                        </div>
+                        <br>
+                        <a href="#" class="btn btn-block login-button">Save</a>
+                    </form>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+        </div>
+        <!-- Profile Card End-->
+
+
+
+    </div>
+    <div class="col-md-3"></div>
+</div>
+<script>
+    $(document).ready(function(){
+        $(document).on("click",".login-button",function(){
+            var form = $(this).closest("form");
+            //console.log(form);
+            form.submit();
+        });
+    });
+</script>

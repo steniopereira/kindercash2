@@ -1,0 +1,53 @@
+{
+  "name": "KinderCash",
+  "version": "1.0.0",
+  "description": "Using Passport with Sequelize and MySQL",
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DJGilmore4U/KinderCash.git"
+  },
+  "author": "DJTurner4U and Team",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0"
+  },
+  "bugs": {
+    "url": "https://github.com/DJGilmore4U/KinderCash/issues"
+  },
+  "homepage": "https://github.com/DJGilmore4U/KinderCash#readme",
+  "dependencies": {
+    "axios": "^0.17.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "connect-redis": "^3.3.3",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
+    "gravatar": "^1.6.0",
+    "hbs": "^4.0.1",
+    "morgan": "^1.9.0",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.3",
+    "npm": "^6.2.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-router-dom": "^4.2.2",
+    "sequelize": "^4.38.0",
+    "serve-favicon": "^2.5.0",
+    "webpack": "^2.7.0"
+  },
+  "keywords": []
+}
